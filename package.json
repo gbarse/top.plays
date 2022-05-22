@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-file-drop": "^13.0.0"
+  }
+}
