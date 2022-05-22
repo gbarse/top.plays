@@ -21,3 +21,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+frontend/top/.angular/cache/
+node_modules/
+.idea/
+.mvn/
+backend/target/
+frontend/top/node_modules/
+frontend/top/node/
+
