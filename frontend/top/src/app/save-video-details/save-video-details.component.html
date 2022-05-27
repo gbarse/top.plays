@@ -5,14 +5,19 @@
     <div class = "mat-title"> Add video metadata</div>
 
     <form [formGroup]="saveVideoDetailsForm">
+      <div>
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
       <input matInput  [formControl]="title" required>
     </mat-form-field>
+      </div>
+      <div>
       <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
         <input matInput [formControl]="description" required>
       </mat-form-field>
+      </div>
+      <div>
     <mat-form-field appearance="fill">
       <mat-label>Video Status</mat-label>
       <mat-select [formControl]="title">
@@ -20,12 +25,51 @@
         <mat-option value="PRIVATE">PRIVATE</mat-option>
       </mat-select>
     </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Save</button>
+      </div>
+      <div>
+      <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(tag)">
+            {{tag}}
+            <button matChipRemove *ngIf="removable">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="Add tag..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      </div>
+      <div>
+        <label for="inputGroupFile01">Upload Thumbnail:
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                   aria-describedby="inputGroupFileAddon01" (change)="onFileSelected($event)">
+          </div>
+          <br/>
+          <div *ngIf="fileSelected">
+            <p>Selected File: {{selectedFileName}} </p>
+          <div *ngIf="fileSelected">
+            </div>
+            <button mat-raised-button color="$mat-indigo" type="submit" (click)="onUpload()">Upload</button>
+          </div>
+          <br>
+        </label>
+      </div>
+      <div>
+        <button type="submit" mat-raised-button color="$mat-blue">Save</button>
+      </div>
+
     </form>
   </div>
 
 <div fxFlex="30%">
-  Video Player
+  <app-video-player [videoUrl]="videoUrl"></app-video-player>
 </div>
 
   <div fxFlex="20%">Hi</div>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from "@angular/material/select";
 import { ReactiveFormsModule} from "@angular/forms";
 import {MatOptionModule} from "@angular/material/core";
+import {MatChipsModule} from "@angular/material/chips";
+import {VgCoreModule} from "@videogular/ngx-videogular/core";
+import {VgControlsModule} from "@videogular/ngx-videogular/controls";
+import {VgOverlayPlayModule} from "@videogular/ngx-videogular/overlay-play";
+import {VgBufferingModule} from "@videogular/ngx-videogular/buffering";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { VideoPlayerComponent } from './video-player/video-player.component';
+import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
+
 
 
 @NgModule({
@@ -27,6 +38,7 @@ import {MatOptionModule} from "@angular/material/core";
     HeaderComponent,
     UploadVideoComponent,
     SaveVideoDetailsComponent,
+    VideoPlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +56,15 @@ import {MatOptionModule} from "@angular/material/core";
     MatSelectModule,
     ReactiveFormsModule,
     MatOptionModule,
+    MatChipsModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    MatSnackBarModule
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 
